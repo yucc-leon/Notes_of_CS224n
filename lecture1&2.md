@@ -1,4 +1,4 @@
-![1556333038130](C:/Users/Asher/AppData/Roaming/Typora/typora-user-images/1556333038130.png)
+![1556333038130](attachment/1556333038130.png)
 
 # Lecture 1 & 2: Word Vectors
 
@@ -99,29 +99,35 @@ $$
 
 
 
-![1553951654598](attachment/1553951654598.png)
-
-![1553951669758](attachment/1553951669758.png)
-
-### 5. Optimization basics: Gradient Descent
-
-Solution: Stochastic gradient descent.
-
-
-
-### 6. Looking at word vectors
-
-
-
 ## Part 2
 
-### 1. Word2vec parameters and computations
+***[Explain the notebook and word vector visualization]***
 
-![1553954499218](attachment/1553954499218.png)
+### 1. Finish looking at word vectors and word2vec
 
-### 2. SGD with word vectors
+Word2vec parameters and computations
+
+![1556418346806](attachment/1556418346806.png)
+
+; sealing with high-frequency words
+
+
+
+![1553951654598](attachment/1553951654598.png)
+
+
+
+
+
+### 2. Optimization basics
+
+![1556419239078](attachment/1556419239078.png)
+
+
 
 ![1553954566266](attachment/1553954566266.png)
+
+
 
 **Solution: Only update the word vectors that actually appear.**
 
@@ -135,11 +141,11 @@ Either you need sparse matrix update operations to only update certain rows of f
 
 ![1553955315817](attachment/1553955315817.png)
 
-### 3. co-occurrence counts
+The work done behind the word2vec paper has lots of tricks to make it practical.
+
+### 3. But why not capture co-occurrence counts directly?
 
 ![1553955397869](attachment/1553955397869.png)
-
-![1553955427478](attachment/1553955427478.png)
 
 ![1553955441497](attachment/1553955441497.png)
 
@@ -163,23 +169,19 @@ SVD of co-occurrence matrix X: Factorizes X into $U\Sigma V^T$, where U and V ar
 
 **Hacks to X: scaling the counts in the cells can help a lot.**
 
-1. Problem: function words are too frequent -> syntax has too much impact. Some fixes:
+- Problem: function words are too frequent -> syntax has too much impact. Some fixes:
+  - min(X, t), with t $\approx$ 100
+  - Ignore them all
 
-- min(X, t), with t $\approx$ 100
+- Ramped windows that count closer words more
 
-- Ignore them all
+- Use Person correlations instead of counts, then set negative values to 0.
 
-2. Ramped windows that count closer words more
-3. Use Person correlations instead of counts, then set negative values to 0.
-4. Etc.
+- Etc.
 
 ### 4. The schools of work 
 
 ![1553955826011](attachment/1553955826011.png)
-
-
-
-
 
 ![1553955865015](attachment/1553955865015.png)
 
@@ -209,11 +211,23 @@ GloVe.
 
 
 
+***Question: how to choose a good dimension of word vector?***
+
+~300 is usually good enough.
+
+Paper: [on the dimensionality of word embedding]
+
+![1556424748426](attachment/1556424748426.png)
+
+
+
 #### Extra: word senses and word sense ambiguity
 
 ![1554021735965](attachment/1554021735965.png)
 
 ![1554021743917](attachment/1554021743917.png)
+
+![1556425003873](attachment/1556425003873.png)
 
 ![1554021756048](attachment/1554021756048.png)
 
